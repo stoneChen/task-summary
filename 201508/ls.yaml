@@ -3,3 +3,5 @@ tasks:
   1: 'Angular'
   2: 'React'
   3: 'Ember'
+  6: 'Bootstrap'
+  8: '请假'
