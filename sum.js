@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require('path');
 
 var LOCAL_DAYS = ['日','一','二','三','四','五','六'];
-var INCIDENT_FILE_NAME = '_incidents.yaml';
+var INCIDENT_FILE_NAME = '_incidents.yml';
 
 var sumPath = process.argv[2];
 if(!fs.existsSync(sumPath)){
@@ -23,7 +23,7 @@ if(!fs.existsSync(incidentPath)){
     incidents = YAML.load(incidentPath);
 }
 
-//遍历yaml数据
+//遍历yml数据
 var members = getMemberList(sumPath);
 
 //获取当月天数
@@ -78,8 +78,8 @@ function getMemberList(sumPath){
     var fileList = fs.readdirSync(sumPath);
     fileList.forEach(function (file) {
         var filePath = path.join(sumPath, file);
-        if(!/\.yaml$/.test(filePath)){
-            log(filePath, 'is not a yaml file, passed.');
+        if(!/\.yml$/.test(filePath)){
+            log(filePath, 'is not a yml file, passed.');
             return;
         }
         if(INCIDENT_FILE_NAME === file){
