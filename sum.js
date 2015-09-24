@@ -63,7 +63,7 @@ function writeMD(){
 }
 
 function getMDContent(resultData){
-    var MD_HEADER_TPL = '# 爱客仕前端组 <%= year %>年<%= month %>月 工作汇总\n';
+    var MD_HEADER_TPL = '# 爱客仕前端组 <%= year %>年<%= month %>月 工作汇总  \n';
     var md = _.template(MD_HEADER_TPL)(resultData);
     resultData.rowList.forEach(function (cols, idx) {
         md += '|' + cols.join('|') + '|\n';
