@@ -136,8 +136,8 @@ function getHeader(members){
 
 
 function getHTMLBody(html){
-    var tail = html.split('<body>')[1],
-        body = tail.split('</body>')[0];
+    var tail = html.split('</head>')[1],
+        body = tail.split('</html>')[0];
     return body;
 }
 
