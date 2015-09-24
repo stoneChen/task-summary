@@ -1,6 +1,6 @@
-#用于前端团队汇总每月工作
-[![Build Status](https://travis-ci.org/stoneChen/task-summary.svg)](https://travis-ci.org/stoneChen/task-summary)
-##如何运作  
+# 用于前端团队汇总每月工作  
+[![Build Status](https://travis-ci.org/stoneChen/task-summary.svg)](https://travis-ci.org/stoneChen/task-summary)  
+## 如何运作  
 
 每个团队成员在相应目录下，提交自己的task数据文件(yml格式)即可。  
 比如，要汇总2015年9月的工作，团队成员有张三和李四。张三要在201507目录下提交自己的数据文件：  
@@ -40,7 +40,8 @@ _incidents.yml为特殊节点日期的数据，格式与tasks列表一致,即：
 30: '内测'
 ```
 
-##生成汇总html
+## 生成汇总html
+
 首次使用，请安装依赖：  
 ```bash
 npm install
