@@ -42,7 +42,7 @@ var resultData = {
 fs.readFile('./sum.jade', function (err, tpl) {
     var fn = jade.compile(tpl, {pretty: true});
     var html = fn(resultData);
-    var fileName = path.join(sumPath, 'sum.html');
+    var fileName = path.join(sumPath, '_SUM_.html');
     fs.writeFile(fileName, html, function (err) {
         if (err) throw err;
         log(fileName + ' created');

@@ -1,5 +1,5 @@
 #用于前端团队汇总每月工作
-
+[![Build Status](https://travis-ci.org/stoneChen/task-summary.svg)](https://travis-ci.org/stoneChen/task-summary)
 ##如何运作  
 
 每个团队成员在相应目录下，提交自己的task数据文件(yml格式)即可。  
@@ -41,7 +41,6 @@ _incidents.yml为特殊节点日期的数据，格式与tasks列表一致,即：
 ```
 
 ##生成汇总html
-###手动方式
 首次使用，请安装依赖：  
 ```bash
 npm install
@@ -55,9 +54,10 @@ node sum {年月}
 ```bash
 node sum 201507
 ```
-node将在201507目录下生成sum.html，里面是一个表格，日期和星期都将自动计算。
+node将在201507目录下生成\_SUM\_.html 和 \_SUM\_.md，里面是一个表格，日期和星期都将自动计算。
 
-###自动方式
-由travis在github云端自动执行上述命令。
+如果你想一次性生成汇总html，并立即看到效果，就执行：
+```bash
+node sum 201507 && open 201507/_SUM_.html
+```
 
-*travis探索中,如果成功了，再回来更新README。*
