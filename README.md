@@ -41,7 +41,7 @@ _incidents.yml为特殊节点日期的数据，格式与tasks列表一致,即：
 ```
 
 ## 生成汇总html和markdown
-*考虑到github或gitlab无法直接预览html，所以顺便生成了markdown*
+*考虑到github或gitlab无法直接预览html，所以顺便生成了markdown*  
 首次使用，请安装依赖：  
 ```bash
 npm install
