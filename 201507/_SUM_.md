@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-  </head>
-  <body>
+
     <div class="container">
       <h1 class="text-center">爱客仕前端组 <b>2015年07月</b> 工作汇总</h1>
       <table class="table table-bordered table table-hover table-striped">
@@ -329,5 +324,4 @@
         </tr>
       </table>
     </div>
-  </body>
-</html>
+  

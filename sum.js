@@ -47,8 +47,9 @@ fs.readFile('./sum.jade', function (err, tpl) {
     fs.writeFile(fileNameHTML, html, function (err) {
         if (err) throw err;
         log(fileNameMD + ' created');
-    })
-    fs.writeFile(fileNameMD, html, function (err) {
+    });
+    var mdContent = getHTMLBody(html);
+    fs.writeFile(fileNameMD, mdContent, function (err) {
         if (err) throw err;
         log(fileNameMD + ' created');
     })
@@ -132,6 +133,17 @@ function getHeader(members){
     });
     return headerList;
 }
+
+
+function getHTMLBody(html){
+    var tail = html.split('<body>')[1],
+        body = tail.split('</body>')[0];
+    return body;
+}
+
+
+
+
 
 function log(){
     var args = [].slice.call(arguments);
