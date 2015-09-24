@@ -2,6 +2,7 @@ var YAML = require('yamljs');
 var jade = require('jade');
 var fs = require('fs');
 var path = require('path');
+var _ = require('lodash');
 
 var LOCAL_DAYS = ['日','一','二','三','四','五','六'];
 var INCIDENT_FILE_NAME = '_incidents.yml';
@@ -39,21 +40,45 @@ var resultData = {
     month: tasksData.month,
     rowList: rowList
 };
+writeMD();
 fs.readFile('./sum.jade', function (err, tpl) {
     var fn = jade.compile(tpl, {pretty: true});
     var html = fn(resultData);
     var fileNameHTML = path.join(sumPath, '_SUM_.html');
-    var fileNameMD = path.join(sumPath, '_SUM_.md');
     fs.writeFile(fileNameHTML, html, function (err) {
+        if (err) throw err;
+        log(fileNameHTML + ' created');
+    });
+});
+
+
+
+function writeMD(){
+    var fileNameMD = path.join(sumPath, '_SUM_.md');
+    var md = getMDContent(resultData);
+    fs.writeFile(fileNameMD, md, function (err) {
         if (err) throw err;
         log(fileNameMD + ' created');
     });
-    var mdContent = getHTMLBody(html);
-    fs.writeFile(fileNameMD, mdContent, function (err) {
-        if (err) throw err;
-        log(fileNameMD + ' created');
-    })
-});
+}
+
+function getMDContent(resultData){
+    var MD_HEADER_TPL = '# 爱客仕前端组 <%= year %>年<%= month %>月 工作汇总\n';
+    var md = _.template(MD_HEADER_TPL)(resultData);
+    resultData.rowList.forEach(function (cols, idx) {
+        md += '|' + cols.join('|') + '|\n';
+        if(idx === 0){//第二行要加横杠，才能成为表格
+            md += _.repeat('|---', cols.length) + '|\n';
+        }
+    });
+    md = _.escape(md);
+    return md;
+}
+
+
+
+
+
 
 
 

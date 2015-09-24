@@ -1,6 +1,6 @@
 name: '李四'
 tasks:
-  1: 'Angular'
-  2: 'React'
+  1: '<Angular>'
+  2: '<React>'
   3: 'Ember'
   4: 'Backbone'
