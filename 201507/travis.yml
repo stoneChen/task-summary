@@ -1,0 +1,3 @@
+name: 'travis'
+tasks:
+  - 24: '测试travis'
