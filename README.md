@@ -42,6 +42,11 @@ _incidents.yml为特殊节点日期的数据，格式与tasks列表一致,即：
 
 ##生成汇总html
 ###手动方式
+首次使用，请安装依赖：  
+```bash
+npm install
+```
+
 每个成员都上传完自己的数据文件后，将所有数据文件pull下来，在根目录下执行  
 ```bash
 node sum {年月} 

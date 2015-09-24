@@ -1,0 +1,25 @@
+{
+  "name": "task-summary",
+  "version": "1.0.0",
+  "description": "to generate task summary per month for a team.",
+  "main": "sum.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stoneChen/task-summary.git"
+  },
+  "author": [
+    "stoneChen"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stoneChen/task-summary/issues"
+  },
+  "homepage": "https://github.com/stoneChen/task-summary#readme",
+  "dependencies": {
+    "jade": "^1.11.0",
+    "yamljs": "^0.2.4"
+  }
+}
