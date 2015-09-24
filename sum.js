@@ -42,10 +42,15 @@ var resultData = {
 fs.readFile('./sum.jade', function (err, tpl) {
     var fn = jade.compile(tpl, {pretty: true});
     var html = fn(resultData);
-    var fileName = path.join(sumPath, '_SUM_.html');
-    fs.writeFile(fileName, html, function (err) {
+    var fileNameHTML = path.join(sumPath, '_SUM_.html');
+    var fileNameMD = path.join(sumPath, '_SUM_.md');
+    fs.writeFile(fileNameHTML, html, function (err) {
         if (err) throw err;
-        log(fileName + ' created');
+        log(fileNameMD + ' created');
+    })
+    fs.writeFile(fileNameMD, html, function (err) {
+        if (err) throw err;
+        log(fileNameMD + ' created');
     })
 });
 
