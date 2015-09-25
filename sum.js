@@ -2,6 +2,7 @@ var YAML = require('yamljs');
 var jade = require('jade');
 var fs = require('fs');
 var path = require('path');
+var chalk = require('chalk');
 var _ = require('lodash');
 
 var LOCAL_DAYS = ['日','一','二','三','四','五','六'];
@@ -9,17 +10,17 @@ var INCIDENT_FILE_NAME = '_incidents.yml';
 
 var sumPath = process.argv[2];
 if(!fs.existsSync(sumPath)){
-    log(sumPath,'does not exist!');
+    log(chalk.red(sumPath + ' does not exist!'));
     return;
 }
 if(!fs.statSync(sumPath).isDirectory()){
-    log(sumPath,'is not a directory!');
+    log(chalk.red(sumPath + ' is not a directory!'));
     return;
 }
 var incidents = {};
 var incidentPath = path.join(sumPath, INCIDENT_FILE_NAME);
 if(!fs.existsSync(incidentPath)){
-    log('No incidents this month');
+    log(chalk.bold('No incidents this month'));
 }else{
     incidents = YAML.load(incidentPath);
 }
@@ -47,7 +48,7 @@ fs.readFile('./sum.jade', function (err, tpl) {
     var fileNameHTML = path.join(sumPath, '_SUM_.html');
     fs.writeFile(fileNameHTML, html, function (err) {
         if (err) throw err;
-        log(fileNameHTML + ' created');
+        log(chalk.green(fileNameHTML + ' created'));
     });
 });
 
@@ -58,7 +59,7 @@ function writeMD(){
     var md = getMDContent(resultData);
     fs.writeFile(fileNameMD, md, function (err) {
         if (err) throw err;
-        log(fileNameMD + ' created');
+        log(chalk.green(fileNameMD + ' created'));
     });
 }
 
@@ -110,14 +111,20 @@ function getMemberList(sumPath){
     fileList.forEach(function (file) {
         var filePath = path.join(sumPath, file);
         if(!/\.yml$/.test(filePath)){
-            log(filePath, 'is not a yml file, passed.');
+            log(chalk.bold(filePath + ' is not a yml file, passed.'));
             return;
         }
         if(INCIDENT_FILE_NAME === file){
-            log('_incidents file passed');
+            log(chalk.cyan('_incidents file passed'));
             return;
         }
-        var member = YAML.load(filePath);
+        var member;
+        try{
+            member = YAML.load(filePath);
+        }catch(error){
+            log(chalk.red(filePath + ' is invalid, passed'));
+            return;
+        }
         members.push(member);
     });
     return members;
